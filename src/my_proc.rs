@@ -1,6 +1,7 @@
 use proc_macro2::TokenStream;
-use quote::quote;
+use quote::quote_spanned;
+use syn::spanned::Spanned;
 
 pub fn my_proc_impl(input: TokenStream) -> TokenStream {
-    quote!(println!("Answer: {}", #input))
+    quote_spanned!(input.span() => compile_error!("I don't like this...");)
 }
