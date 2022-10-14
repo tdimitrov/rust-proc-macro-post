@@ -6,5 +6,7 @@ mod my_proc;
 #[proc_macro]
 pub fn my_proc_macro(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input);
-    my_proc::my_proc_impl(input).into()
+    my_proc::my_proc_impl(input)
+        .unwrap_or_else(|e| e.to_compile_error())
+        .into()
 }
