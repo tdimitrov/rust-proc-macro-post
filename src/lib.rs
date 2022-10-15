@@ -10,3 +10,9 @@ pub fn my_proc_macro(input: TokenStream) -> TokenStream {
         .unwrap_or_else(|e| e.to_compile_error())
         .into()
 }
+
+#[test]
+fn ui() {
+    let t = trybuild::TestCases::new();
+    t.compile_fail("tests/ui/*.rs");
+}

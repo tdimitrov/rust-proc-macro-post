@@ -1,0 +1,5 @@
+error: Answer should be 42
+ --> tests/ui/wrong_answer.rs:4:20
+  |
+4 |     my_proc_macro!(43);
+  |                    ^^
